@@ -52,7 +52,6 @@ import net.sf.json.JSONObject;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.lang.StringUtils;
-import org.apache.maven.shared.release.versions.DefaultVersionInfo;
 import org.apache.maven.shared.release.versions.VersionParseException;
 import org.kohsuke.stapler.StaplerRequest;
 import org.kohsuke.stapler.StaplerResponse;
@@ -151,7 +150,7 @@ public class M2ReleaseAction implements PermalinkProjectAction {
 		final MavenModule rootModule = getRootModule();
 		if (rootModule != null && StringUtils.isNotBlank(rootModule.getVersion())) {
 			try {
-				DefaultVersionInfo dvi = new DefaultVersionInfo(rootModule.getVersion());
+				MyToysVersionInfo dvi = new MyToysVersionInfo(rootModule.getVersion());
 				version = dvi.getReleaseVersionString();
 			} catch (VersionParseException vpEx) {
 				LOGGER.log(Level.WARNING, "Failed to compute next version.", vpEx);
@@ -184,7 +183,7 @@ public class M2ReleaseAction implements PermalinkProjectAction {
 		final MavenModule rootModule = getRootModule();
 		if (rootModule != null && StringUtils.isNotBlank(rootModule.getVersion())) {
 			try {
-				DefaultVersionInfo dvi = new DefaultVersionInfo(rootModule.getVersion());
+				MyToysVersionInfo dvi = new MyToysVersionInfo(rootModule.getVersion());
 				version = dvi.getNextVersion().getSnapshotVersionString();
 			} catch (Exception vpEx) {
 				LOGGER.log(Level.WARNING, "Failed to compute next version.", vpEx);
