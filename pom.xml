@@ -4,7 +4,7 @@
 	<groupId>org.jenkins-ci.plugins.m2release</groupId>
 	<artifactId>m2release-mytoys</artifactId>
 	<packaging>hpi</packaging>
-	<version>0.15.0-mytoys</version>
+	<version>0.15.1-mytoys-SNAPSHOT</version>
 
 	<parent>
 		<groupId>org.jenkins-ci.plugins</groupId>
