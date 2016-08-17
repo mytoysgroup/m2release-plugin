@@ -48,15 +48,24 @@ public class MyToysVersionInfo extends DefaultVersionInfo implements
 		if ( betaIndex >= 0 ) {
 			return baseVersion.substring(0,betaIndex);
 		}
-		if ( alphaIndex >= 0 ) {
-			return baseVersion.substring(0, alphaIndex);
-		}
-		return baseVersion;
+		//if ( alphaIndex >= 0 ) {
+		//	return baseVersion.substring(0, alphaIndex);
+		//}
+		return super.getReleaseVersionString();
 	}
 
 	@Override
 	public String getSnapshotVersionString() {
-		String baseVersion = getReleaseVersionString();
+		String baseVersion = getVersionString(this, getBuildSpecifier(), "-");
+		int alphaIndex = baseVersion.indexOf("-ALPHA");
+		int betaIndex = baseVersion.indexOf("-BETA");
+		String releaseVersion = getReleaseVersionString();
+		if ( alphaIndex >= 0 ) {
+			return releaseVersion + "-SNAPSHOT";
+		}
+		if ( betaIndex >= 0 ) {
+			return releaseVersion + "-BETA-SNAPSHOT";
+		}
 		return baseVersion + "-BETA-SNAPSHOT";
 	}
 	
